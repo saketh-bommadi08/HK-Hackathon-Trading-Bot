@@ -1,11 +1,11 @@
-from typing import Optional
+from typing import Optional,Union
 
 from api_utils import signed_post
 
 
 def query_order(
     pair: Optional[str] = None,
-    order_id: Optional[int | str] = None,
+    order_id: Optional[Union[int,str]] = None,
     pending_only: Optional[bool] = None,
     limit: Optional[int] = None,
 ):
@@ -35,13 +35,13 @@ def query_order(
     return data
 
 
-def get_order_by_id(pair: str, order_id: int | str):
+def get_order_by_id(pair: str, order_id: Union[int,str]):
     return query_order(order_id=order_id)
 
 
 def cancel_order(
     pair: Optional[str] = None,
-    order_id: Optional[int | str] = None,
+    order_id: Optional[Union[int,str]] = None,
 ):
     if order_id is not None:
         params = {"order_id": str(order_id)}
